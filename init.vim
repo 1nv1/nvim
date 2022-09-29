@@ -5,6 +5,8 @@ Plug 'preservim/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/vim-easy-align' 
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'mbbill/undotree'
+Plug 'tribela/vim-transparent'
 call plug#end()
 colorscheme dracula
 set number relativenumber
@@ -15,6 +17,8 @@ set autoindent expandtab tabstop=2 shiftwidth=2
 let mapleader=" "
 nmap <Leader>w :w<CR>
 nmap <Leader>ls :ls<CR>
+
+nnoremap <F5> :UndotreeToggle<CR>
 
 " Remap j + j as escape key
 imap jj <Esc> 
@@ -40,5 +44,16 @@ nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
+" Open the current folder
+nnoremap <expr> <leader>e ':edit ' . expand('%:h')
+
 " Align GitHub-flavored Markdown tables
 vmap <leader><Bar> :EasyAlign *<Bar><Enter>
+
+" Use persistent history.
+if !isdirectory("/tmp/.vim-undo-dir")
+    call mkdir("/tmp/.vim-undo-dir", "", 0700)
+endif
+set undodir=/tmp/.vim-undo-dir
+set undofile
+
