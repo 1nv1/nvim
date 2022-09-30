@@ -2,4 +2,4 @@
 
 ## Theme
 
-I use [dracula](https://draculatheme.com/vim
+I use [dracula](https://draculatheme.com/vim) theme
