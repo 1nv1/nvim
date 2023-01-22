@@ -8,6 +8,7 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'mbbill/undotree'
 Plug 'tribela/vim-transparent'
 Plug 'folke/zen-mode.nvim'
+Plug 'Exafunction/codeium.vim'
 call plug#end()
 colorscheme dracula
 set number relativenumber
@@ -61,3 +62,8 @@ endif
 set undodir=/tmp/.vim-undo-dir
 set undofile
 
+lua << EOF
+vim.keymap.set('i', '<tab>', function ()
+  return vim.fn['codeium#Accept']()
+end, { expr = true })
+EOF
